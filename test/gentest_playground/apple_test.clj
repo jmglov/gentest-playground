@@ -1,10 +1,10 @@
 (ns gentest-playground.apple-test
-  (:require [clojure.test :as t]
-            [clojure.test.check.clojure-test :refer [defspec]]
-            [clojure.test.check.properties :as prop]
-            [clojure.spec.alpha :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.spec.gen.alpha :as gen]
             [clojure.spec.test.alpha :as stest]
+            [clojure.test :as t]
+            [clojure.test.check.clojure-test :refer [defspec]]
+            [clojure.test.check.properties :as prop]
             [gentest-playground.apple :as apple]))
 
 (defn get-unit [apple]

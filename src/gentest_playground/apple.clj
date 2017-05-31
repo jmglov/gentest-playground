@@ -59,6 +59,3 @@
 
 (defn sort [apples]
   (sort-by weight-in-grams apples))
-
-(defn ->response [apple]
-  apple)

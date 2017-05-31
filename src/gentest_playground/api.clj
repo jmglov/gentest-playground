@@ -8,6 +8,16 @@
 
 (defonce apples (atom {}))
 
+(defn ->response [{:keys [:apple/id
+                          :apple/colour
+                          :apple/variety
+                          :apple/weight]}]
+  {:id id
+   :colour colour
+   :variety variety
+   :weight {:unit (name (:weight/unit weight))
+            :value (:weight/value weight)}})
+
 (def routes
   ["/apples"
    [[""
@@ -18,14 +28,15 @@
                    :charset "UTF-8"}]
        :methods
        {:get {:response (fn [ctx]
-                          (map apple/->response (apple/sort (vals @apples))))}
+                          (map ->response (apple/sort (vals @apples))))}
         :post {:parameters {:body {:colour String
                                    :grams Integer
                                    :variety String}}
                :consumes [{:media-type #{"application/json"}
                            :charset "UTF-8"}]
                :response (fn [ctx]
-                           (let [{:keys [:apple/id] :as apple} (apple/create (get-in ctx [:parameters :body]))]
+                           (let [{:keys [colour variety grams]} (get-in ctx [:parameters :body])
+                                 {:keys [:apple/id] :as apple} (apple/create colour variety grams)]
                              (swap! apples assoc id apple)
                              (java.net.URI. (str "http://localhost:8842/apples/" id))))}}})]
     [["/" :apple]
@@ -38,7 +49,7 @@
        :methods
        {:get {:response (fn [ctx]
                           (let [id (get-in ctx [:parameters :path :apple])]
-                            (apple/->response (get @apples id))))}}})]]])
+                            (->response (get @apples id))))}}})]]])
 
 (defrecord Api [config]
   component/Lifecycle
