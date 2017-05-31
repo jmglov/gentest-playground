@@ -1,36 +1,10 @@
 # gentest-playground
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar gentest-playground-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+A demonstration of basic generative testing practises in Clojure.
 
 ## License
 
-Copyright © 2017 FIXME
+Copyright © 2017 Josh Glover <jmglov@gmail.com>
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

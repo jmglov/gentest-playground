@@ -8,15 +8,8 @@
 
 (defonce apples (atom {}))
 
-(defn ->response [{:keys [:apple/id
-                          :apple/colour
-                          :apple/variety
-                          :apple/weight]}]
-  {:id id
-   :colour colour
-   :variety variety
-   :weight {:unit (name (:weight/unit weight))
-            :value (:weight/value weight)}})
+(defn ->response [apple]
+  apple)
 
 (def routes
   ["/apples"
